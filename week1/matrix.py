@@ -8,7 +8,7 @@ b = Matrix([[1, 0], [0, 1]])
 
 assert a * b == a
 assert b * b == b
-assert a + b == Matrix([[2, 2], [3, 6]])
+assert a + b == Matrix([[2, 3], [2, 6]])
 
 ---------------------------------------
 
@@ -17,17 +17,6 @@ i = Matrix.Identity(3) #  Creates an identity matrix 3x
 z = Matrix.Zeros(3, 3) #  Create a zero matrix 3x3
 
 """
-
-
-def Identity(n):
-    matrix = Zeros(n, n)
-    for i in range(n):
-        matrix[i][i] = 1
-    return matrix
-
-
-def Zeros(n, m):
-    return Matrix([[0] * m for _ in range(n)])
 
 
 class Matrix:
@@ -75,7 +64,7 @@ class Matrix:
         if other.rows != self.cols:
             raise ValueError('self.cols != other.rows')
 
-        result = Zeros(self.rows, other.cols)
+        result = Matrix.Zeros(self.rows, other.cols)
         for i in range(self.rows):
             for j in range(other.cols):
                 for k in range(other.rows):
